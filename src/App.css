@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.registerBox
+{
+  padding-top: 100px;
+  width: 900px;
+    padding-left: 200px;
+}
+
+.flexbox div{
+  display: flex;
+  padding-top: 10px;
+
+}
+.flexbox div div{
+  width: 30%;
+
+}
+.flexbox div input{
+  width: 30%;
+
+}

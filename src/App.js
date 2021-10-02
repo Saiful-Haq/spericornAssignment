@@ -1,24 +1,47 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import Home from './screens/Home';
+import Login from './screens/Login';
+import Registration from './screens/Registration';
+
+import PrivateRoute from './components/PrivateRoute';
+
+import {UserProvider} from './Context/UserContext'
+import { useEffect } from 'react';
+
 function App() {
+
+  // useEffect(()=>{
+  //   const data={email:'',
+  //       password:'',
+  //       username:'',
+  //       phone:''
+  //   }
+  //      // e.preventDefault();
+  //   //console.log(e);
+  //       fetch("https://devgroceryapi.spericorn.com/api/auth/register",
+  //       {
+  //           method: "POST",
+  //           body: data
+  //       })
+  //       .then(function(res){ console.log( res); })
+
+  // },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+    <Router>
+
+      <Switch>
+          <Route exact path='/' component={Login} />
+          <PrivateRoute path='/Home' component={Home} exact />
+          <Route path='/Registration' component={Registration} exact />
+      </Switch>
+   
+  </Router>
+  </UserProvider>
   );
 }
 
